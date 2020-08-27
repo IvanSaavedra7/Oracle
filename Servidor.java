@@ -8,7 +8,7 @@ public class Servidor
     {
         if (args.length>1)
         {
-            System.err.println ("Uso esperado: java Servidor [PORTA]\n");
+            System.err.println ("GIT PUSH: java Servidor [PORTA]\n");
             return;
         }
 
