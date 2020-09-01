@@ -1,0 +1,129 @@
+ackage bd.dbos;
+
+public class Administrador implements Cloneable
+{
+    private String  nome, username, senha;
+ 
+    public void setNome (String nome) throws Exception
+    {
+        if (nome==null || nome.equals(""))
+            throw new Exception ("Nome não fornecido.");
+
+        this.nome = nome;
+    }   
+
+    public void setUsername (String username) throws Exception
+    {
+        if (username==null || username.equals(""))
+            throw new Exception ("Username não fornecido.");
+
+        this.username = username;
+    }
+    
+    public void setSenha (String senha) throws Exception
+    {
+        if (senha==null || senha.equals(""))
+            throw new Exception ("Senha não fornecida.");
+
+        this.senha = senha;
+    }
+
+
+    public int getRA ()
+    {
+        return this.ra;
+    }
+
+    public String getNome ()
+    {
+        return this.nome;
+    }
+
+    public String getEmail ()
+    {
+        return this.email;
+    }
+
+    public Aluno (int ra, String nome, String email) throws Exception
+    {
+        this.setRA 	   (ra);
+        this.setNome   (nome);
+        this.setEmail  (email);
+    }
+    
+    public Aluno (String nome, String email) throws Exception
+    {
+        this.setNome   (nome);
+        this.setEmail  (email);
+    }
+
+    public String toString ()
+    {
+        String ret="";
+
+        ret+="RA.:    "+this.ra+"\n";
+        ret+="Nome..: "+this.nome  +"\n";
+        ret+="Email.: "+this.email;
+
+        return ret;
+    }
+
+    public boolean equals (Object obj)
+    {
+        if (this==obj)
+            return true;
+
+        if (obj==null)
+            return false;
+
+        if (!(obj instanceof Aluno))
+            return false;
+
+        Aluno aluno = (Aluno)obj;
+
+        if (this.ra!=aluno.ra)
+            return false;
+
+        if (!this.nome.equals(aluno.nome))
+            return false;
+
+        if (!this.email.equals(aluno.email))
+            return false;
+
+        return true;
+    }
+
+    public int hashCode ()
+    {
+        int ret=666;
+
+        ret = 7*ret + new Integer(this.ra).hashCode();
+        ret = 7*ret + this.nome.hashCode();
+        ret = 7*ret + this.email.hashCode();
+
+        return ret;
+    }
+
+
+    public Aluno (Aluno modelo) throws Exception
+    {
+        this.ra 	= modelo.ra; // nao clono, pq nao eh objeto
+        this.nome   = modelo.nome;   // nao clono, pq nao eh clonavel
+        this.email  = modelo.email;  // nao clono, pq nao eh clonavel
+    }
+
+    public Object clone ()
+    {
+        Aluno ret=null;
+
+        try
+        {
+            ret = new Aluno (this);
+        }
+        catch (Exception erro)
+        {} // nao trato, pq this nunca é null e construtor de
+           // copia da excecao qdo seu parametro for null
+
+        return ret;
+    }
+}
