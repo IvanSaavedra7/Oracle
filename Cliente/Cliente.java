@@ -1,7 +1,8 @@
 import java.net.*;
 import java.io.*;
 
-public class Cliente // TESTE - RAFAEL3
+// A
+public class Cliente 
 {
 	public static final String HOST_PADRAO  = "localhost";
 	public static final int    PORTA_PADRAO = 3000;
